@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 class Equipo extends Model {
-    protected $fillable = ['nombre', 'ciudad', 'presupuesto', 'id_liga'];
+    protected $fillable = ['nombre', 'ciudad', 'presupuesto', 'id_liga', 'foto'];
     public function liga() { 
         return $this->belongsTo(Liga::class, 'id_liga');
     }

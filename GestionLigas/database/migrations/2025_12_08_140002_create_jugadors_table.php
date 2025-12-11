@@ -5,10 +5,6 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
-    /**
-     * Run the migrations.
-     */
-    // database/migrations/xxxx_create_equipos_table.php
     public function up(): void
     {
         Schema::create('jugadores', function (Blueprint $table) {
@@ -19,17 +15,17 @@ return new class extends Migration {
             $table->string('dni', 9)->unique();
             $table->integer('goles')->default(0);
             $table->integer('edad');
+            $table->string('foto')->nullable();
             $table->foreignId('id_equipo');
             $table->timestamps();
+            
             $table->foreign('id_equipo')->references('id')->on('equipos')->onDelete('cascade');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
-        Schema::dropIfExists('jugadors');
+        // CORREGIDO: El nombre de la tabla es 'jugadores', no 'jugadors'
+        Schema::dropIfExists('jugadores');
     }
 };
